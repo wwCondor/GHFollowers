@@ -12,12 +12,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = createTabeBarController()
+        window?.makeKeyAndVisible()
+        
+    }
+    
+    /// Creates the UINavigationController
+    private func createSearchNavigationController() -> UINavigationController {
+        let searchViewController = SearchViewController()
+        searchViewController.title = "Search"
+        searchViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        
+        return   UINavigationController(rootViewController: searchViewController)
+    }
+    
+    private func createFavouritesNavigationController() -> UINavigationController {
+        let favouritesListViewController = FavouritesListViewController()
+        favouritesListViewController.title = "Favourites"
+        favouritesListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        
+        return   UINavigationController(rootViewController: favouritesListViewController)
+    }
+    
+    /// Creates the  UITabeBarController
+    private func createTabeBarController() -> UITabBarController {
+        let tabBar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen // Sets tintColor for tabBar app-wide.
+        tabBar.viewControllers = [createSearchNavigationController(), createFavouritesNavigationController()]
+        
+        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
