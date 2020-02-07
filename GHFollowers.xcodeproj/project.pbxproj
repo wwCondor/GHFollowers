@@ -24,6 +24,10 @@
 		0B43487F23ED9E47002EFE9B /* GFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487E23ED9E47002EFE9B /* GFAlertViewController.swift */; };
 		0B43488123EDB12F002EFE9B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43488023EDB12F002EFE9B /* Alert.swift */; };
 		0B43488423EDC631002EFE9B /* GFContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43488323EDC631002EFE9B /* GFContainerView.swift */; };
+		0B43488623EDE519002EFE9B /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43488523EDE519002EFE9B /* Follower.swift */; };
+		0B43488823EDE5E6002EFE9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43488723EDE5E6002EFE9B /* User.swift */; };
+		0B43488B23EDE965002EFE9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43488A23EDE965002EFE9B /* NetworkManager.swift */; };
+		0B43488D23EDEFE5002EFE9B /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43488C23EDEFE5002EFE9B /* GFError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		0B43487E23ED9E47002EFE9B /* GFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertViewController.swift; sourceTree = "<group>"; };
 		0B43488023EDB12F002EFE9B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		0B43488323EDC631002EFE9B /* GFContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFContainerView.swift; sourceTree = "<group>"; };
+		0B43488523EDE519002EFE9B /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		0B43488723EDE5E6002EFE9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0B43488A23EDE965002EFE9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0B43488C23EDEFE5002EFE9B /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +125,11 @@
 		0B43486823EC8C9E002EFE9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B43488523EDE519002EFE9B /* Follower.swift */,
+				0B43488723EDE5E6002EFE9B /* User.swift */,
 				0B43487423EC9B1B002EFE9B /* Configuration.swift */,
+				0B43488C23EDEFE5002EFE9B /* GFError.swift */,
+				0B43488923EDE949002EFE9B /* Networking */,
 				0B43486D23EC92CA002EFE9B /* Extension */,
 			);
 			path = Model;
@@ -130,6 +142,14 @@
 				0B43488023EDB12F002EFE9B /* Alert.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		0B43488923EDE949002EFE9B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0B43488A23EDE965002EFE9B /* NetworkManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,12 +222,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B43488B23EDE965002EFE9B /* NetworkManager.swift in Sources */,
 				0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */,
 				0B43487123EC9510002EFE9B /* FavouritesListViewController.swift in Sources */,
 				0B43486F23EC94D2002EFE9B /* SearchViewController.swift in Sources */,
+				0B43488623EDE519002EFE9B /* Follower.swift in Sources */,
+				0B43488D23EDEFE5002EFE9B /* GFError.swift in Sources */,
 				0B43487B23ED9BE6002EFE9B /* GFTitleLabel.swift in Sources */,
 				0B43486A23EC8D16002EFE9B /* ProjectInformation.swift in Sources */,
 				0B43487923ED92C9002EFE9B /* FollowerListViewController.swift in Sources */,
+				0B43488823EDE5E6002EFE9B /* User.swift in Sources */,
 				0B43488123EDB12F002EFE9B /* Alert.swift in Sources */,
 				0B43487323EC99F9002EFE9B /* GFButton.swift in Sources */,
 				0B43487D23ED9D66002EFE9B /* GFBodyLabel.swift in Sources */,
