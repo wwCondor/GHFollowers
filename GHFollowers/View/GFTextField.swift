@@ -15,9 +15,8 @@ class GFTextField: UITextField {
         configure()
     }
     
-    
     required init?(coder: NSCoder) {
-        fatalError("Has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configure() {
@@ -38,6 +37,7 @@ class GFTextField: UITextField {
         autocorrectionType = .no
         keyboardType = .default // sets keyboard type
         returnKeyType = .go
+        autocapitalizationType = .none
 
         placeholder = "Enter a username"
     }

@@ -16,7 +16,7 @@ class GFButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("Has not been implemted")
+        fatalError("init(coder:) has not been implemented")
     }
     
     /// With this we can initialize a button quickly with its own color and title
