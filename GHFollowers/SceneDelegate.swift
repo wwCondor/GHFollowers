@@ -18,9 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = createTabeBarController()
+        window?.rootViewController = createTabBarController()
         window?.makeKeyAndVisible()
         
+        configureNavigationBar()
     }
     
     /// Creates the UINavigationController
@@ -41,12 +42,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     /// Creates the  UITabeBarController
-    private func createTabeBarController() -> UITabBarController {
+    private func createTabBarController() -> UITabBarController {
         let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemGreen // Sets tintColor for tabBar app-wide.
+        UITabBar.appearance().tintColor = .systemPink
         tabBar.viewControllers = [createSearchNavigationController(), createFavouritesNavigationController()]
         
         return tabBar
+    }
+    
+    private func configureNavigationBar() {
+        UINavigationBar.appearance().tintColor = .systemPink
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

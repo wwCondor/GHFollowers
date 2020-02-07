@@ -18,6 +18,7 @@
 		0B43487323EC99F9002EFE9B /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487223EC99F9002EFE9B /* GFButton.swift */; };
 		0B43487523EC9B1B002EFE9B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487423EC9B1B002EFE9B /* Configuration.swift */; };
 		0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487623EC9E67002EFE9B /* GFTextField.swift */; };
+		0B43487923ED92C9002EFE9B /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0B43487223EC99F9002EFE9B /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		0B43487423EC9B1B002EFE9B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		0B43487623EC9E67002EFE9B /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				0B43486E23EC94D2002EFE9B /* SearchViewController.swift */,
 				0B43487023EC9510002EFE9B /* FavouritesListViewController.swift */,
+				0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				0B43487123EC9510002EFE9B /* FavouritesListViewController.swift in Sources */,
 				0B43486F23EC94D2002EFE9B /* SearchViewController.swift in Sources */,
 				0B43486A23EC8D16002EFE9B /* ProjectInformation.swift in Sources */,
+				0B43487923ED92C9002EFE9B /* FollowerListViewController.swift in Sources */,
 				0B43487323EC99F9002EFE9B /* GFButton.swift in Sources */,
 				0B43485323EC8C8D002EFE9B /* AppDelegate.swift in Sources */,
 				0B43485523EC8C8D002EFE9B /* SceneDelegate.swift in Sources */,

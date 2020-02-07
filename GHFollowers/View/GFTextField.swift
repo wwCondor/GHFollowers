@@ -12,6 +12,7 @@ class GFTextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     
@@ -35,7 +36,9 @@ class GFTextField: UITextField {
         
         backgroundColor = .tertiarySystemBackground
         autocorrectionType = .no
-        
+        keyboardType = .default // sets keyboard type
+        returnKeyType = .go
+
         placeholder = "Enter a username"
     }
 }
