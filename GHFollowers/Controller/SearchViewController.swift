@@ -57,7 +57,7 @@ class SearchViewController: UIViewController {
     @objc private func pushFollowerListViewController() {
         print("Button pressed")
         guard isUsernameEntered else {
-            presentGFAlertOnMainThread(title: "Empty Username", message: GFError.missingUsername.localizedDescription, buttonTitle: "OK")
+            presentGFAlertOnMainThread(title: "Empty Username", message: GFError.invalidUsername.localizedDescription, buttonTitle: "OK")
             return }
         let followerListViewController = FollowerListViewController()
         followerListViewController.username = usernameTextField.text
