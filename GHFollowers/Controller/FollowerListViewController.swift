@@ -14,8 +14,10 @@ class FollowerListViewController: UIViewController {
     
     var username: String?
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var page: Int = 1
     var hasMoreFollowers = true
+    var isSearching: Bool = false
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -26,11 +28,20 @@ class FollowerListViewController: UIViewController {
         collectionView.delegate = self
         return collectionView
     }()
+    
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a username"
+        searchController.obscuresBackgroundDuringPresentation = false
+        return searchController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         setupView()
+        configureSearchController()
         guard let username = username else { return }
         getFollowers(username: username, page: page)
         configureDataSource()
@@ -50,6 +61,10 @@ class FollowerListViewController: UIViewController {
         view.addSubview(collectionView)
     }
     
+    private func configureSearchController() {
+        navigationItem.searchController = searchController
+    }
+    
     private func getFollowers(username: String, page: Int) {
         showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in // called a capture list
@@ -59,15 +74,13 @@ class FollowerListViewController: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollowers = false }
                 self.followers.append(contentsOf: followers)
-                
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them. ☺️"
                     DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
                     return
                 }
-                
-                self.updateData()
-                
+                self.updateData(on: self.followers)
+//                DispatchQueue.main.async { self.updateSearchResults(for: self.searchController) }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
@@ -82,7 +95,7 @@ class FollowerListViewController: UIViewController {
         })
     }
     
-    private func updateData() {
+    private func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -91,7 +104,7 @@ class FollowerListViewController: UIViewController {
 }
 
 extension FollowerListViewController: UICollectionViewDelegate {
-    
+    /// When user scrolls all the way towards the bottom of the scrollView a request will be made for the next followers-page
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -104,5 +117,32 @@ extension FollowerListViewController: UICollectionViewDelegate {
             getFollowers(username: username, page: page)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray  = isSearching ? filteredFollowers : followers // true : false condition ( W ? T : F )
+        let followerSelected = activeArray[indexPath.item]
+        let destinationViewController = UserInfoViewController()
+        destinationViewController.username = followerSelected.login
+        let navigationController = UINavigationController(rootViewController: destinationViewController)
+        present(navigationController, animated: true)
+    }
 }
 
+extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    /// Anytime the search bar input has changes this will inform the viewController
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, filter.isNotEmpty else {
+            updateData(on: followers)
+            return
+        }
+        isSearching = true
+        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+        updateData(on: filteredFollowers)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
+        filteredFollowers.removeAll()
+        updateData(on: followers)
+    }
+}
