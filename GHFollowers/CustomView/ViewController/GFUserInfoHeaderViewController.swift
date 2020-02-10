@@ -9,9 +9,112 @@
 import UIKit
 
 class GFUserInfoHeaderViewController: UIViewController {
+    
+    var user: User?
+    
+    lazy var avatarImageView: GFAvatarImageView = {
+        let avatarImageView = GFAvatarImageView(frame: .zero)
+        return avatarImageView
+    }()
 
+    lazy var usernameLabel: GFTitleLabel = {
+        let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 34)
+        return usernameLabel
+    }()
+    
+    lazy var nameLabel: GFSecondaryTitleLabel = {
+        let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
+        return nameLabel
+    }()
+    
+    lazy var locationImageView: UIImageView = {
+        let locationImageView = UIImageView()
+        let locationImage = UIImage(systemName: SFSymbols.sfLocation)
+        locationImageView.image = locationImage
+        locationImageView.tintColor = .systemPink
+        locationImageView.alpha = 0.65
+        locationImageView.translatesAutoresizingMaskIntoConstraints = false
+        return locationImageView
+    }()
+    
+    lazy var locationLabel: GFSecondaryTitleLabel = {
+        let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
+        return locationLabel
+    }()
+    
+    lazy var bioLabel: GFBodyLabel = {
+        let bioLabel = GFBodyLabel(textAlignment: .left)
+        bioLabel.numberOfLines = 3
+        return bioLabel
+    }()
+    
+    init(user: User) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+        configureView()
+        configureUIForUser()
+    }
+     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureView()
+        configureUIForUser()
+    }
+    
+    private func configureUIForUser() {
+        guard let user = user else { return }
+        avatarImageView.downloadImage(from: user.avatarUrl)
+        usernameLabel.text = user.login
+        nameLabel.text = user.name ?? "-"
+        locationLabel.text = user.location ?? "No location"
+        bioLabel.text = user.bio ?? "No available bio"
+    }
+    
+    private func configureView() {
+        view.addSubview(avatarImageView)
+        view.addSubview(usernameLabel)
+        view.addSubview(nameLabel)
+        view.addSubview(locationImageView)
+        view.addSubview(locationLabel)
+        view.addSubview(bioLabel)
+        
+        let padding: CGFloat = 20
+        let textImagePadding: CGFloat = 12
+        
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 90),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 90),
+            
+            usernameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
+            usernameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
+            usernameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            usernameLabel.heightAnchor.constraint(equalToConstant: 38),
+            
+            nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            locationImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
+            locationImageView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
+            locationImageView.widthAnchor.constraint(equalToConstant: 20),
+            locationImageView.heightAnchor.constraint(equalToConstant: 20),
+            
+            locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor),
+            locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 5),
+            locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            locationLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
+            bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
+            bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            bioLabel.heightAnchor.constraint(equalToConstant: 60),
+        ])
     }
 }

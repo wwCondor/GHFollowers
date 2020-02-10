@@ -14,8 +14,8 @@ class GFAlertViewController: UIViewController {
     private var alertMessage: String?
     private var alertButtonTitle: String?
     
-    private lazy var containerView: GFContainerView = {
-        let containerView = GFContainerView()
+    private lazy var containerView: GFAlertContainerView = {
+        let containerView = GFAlertContainerView()
         return containerView
     }()
     
