@@ -6,15 +6,17 @@
 //  Copyright © 2020 CodingCondor. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     
     static let shared = NetworkManager()
     private init() { } /// These two lines makes it a singleton
     
-    let baseUrl: String = "https://api.github.com/users/"
-    let perPageFollowers: Int = 100
+    private let baseUrl: String = "https://api.github.com/users/"
+    private let perPageFollowers: Int = 100
+    
+    let avatarImageCache = NSCache<NSString, UIImage>() /// init cache
     
     func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         let endpoint = baseUrl + "\(username)/followers?per_page=\(perPageFollowers)&page=\(page)"
