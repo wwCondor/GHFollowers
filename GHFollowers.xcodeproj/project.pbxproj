@@ -36,6 +36,8 @@
 		0B43489D23F168AF002EFE9B /* StringNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43489C23F168AF002EFE9B /* StringNotEmpty.swift */; };
 		0B43489F23F1889A002EFE9B /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43489E23F1889A002EFE9B /* UserInfoViewController.swift */; };
 		0B4348A123F190EA002EFE9B /* GFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348A023F190EA002EFE9B /* GFError.swift */; };
+		0B4348A423F1966E002EFE9B /* GFUserInfoHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */; };
+		0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		0B43489C23F168AF002EFE9B /* StringNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringNotEmpty.swift; sourceTree = "<group>"; };
 		0B43489E23F1889A002EFE9B /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		0B4348A023F190EA002EFE9B /* GFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFError.swift; sourceTree = "<group>"; };
+		0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderViewController.swift; sourceTree = "<group>"; };
+		0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				0B43486823EC8C9E002EFE9B /* Model */,
-				0B43486723EC8C9D002EFE9B /* View */,
-				0B43486623EC8C9B002EFE9B /* Controller */,
+				0B43486723EC8C9D002EFE9B /* CustomView */,
+				0B43486623EC8C9B002EFE9B /* Screens */,
 				0B43485223EC8C8D002EFE9B /* AppDelegate.swift */,
 				0B43485423EC8C8D002EFE9B /* SceneDelegate.swift */,
 				0B43485B23EC8C8F002EFE9B /* Assets.xcassets */,
@@ -115,30 +119,28 @@
 			path = GHFollowers;
 			sourceTree = "<group>";
 		};
-		0B43486623EC8C9B002EFE9B /* Controller */ = {
+		0B43486623EC8C9B002EFE9B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				0B43486E23EC94D2002EFE9B /* SearchViewController.swift */,
 				0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */,
 				0B43489E23F1889A002EFE9B /* UserInfoViewController.swift */,
 				0B43487023EC9510002EFE9B /* FavouritesListViewController.swift */,
-				0B43487E23ED9E47002EFE9B /* GFAlertViewController.swift */,
 			);
-			path = Controller;
+			path = Screens;
 			sourceTree = "<group>";
 		};
-		0B43486723EC8C9D002EFE9B /* View */ = {
+		0B43486723EC8C9D002EFE9B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				0B43487223EC99F9002EFE9B /* GFButton.swift */,
-				0B43487623EC9E67002EFE9B /* GFTextField.swift */,
-				0B43487A23ED9BE6002EFE9B /* GFTitleLabel.swift */,
-				0B43487C23ED9D66002EFE9B /* GFBodyLabel.swift */,
-				0B43488323EDC631002EFE9B /* GFContainerView.swift */,
-				0B43489923F15D16002EFE9B /* CustomView */,
+				0B4348A723F1969D002EFE9B /* Label */,
+				0B4348A623F19691002EFE9B /* TextField */,
+				0B4348A523F1968A002EFE9B /* Button */,
+				0B4348A223F19643002EFE9B /* ViewController */,
+				0B43489923F15D16002EFE9B /* View */,
 				0B43488E23F027D0002EFE9B /* Cell */,
 			);
-			path = View;
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		0B43486823EC8C9E002EFE9B /* Model */ = {
@@ -183,13 +185,49 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		0B43489923F15D16002EFE9B /* CustomView */ = {
+		0B43489923F15D16002EFE9B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B43488323EDC631002EFE9B /* GFContainerView.swift */,
 				0B43489123F028EA002EFE9B /* GFAvatarImageView.swift */,
 				0B43489723F15D08002EFE9B /* GFEmptyStateView.swift */,
 			);
-			path = CustomView;
+			path = View;
+			sourceTree = "<group>";
+		};
+		0B4348A223F19643002EFE9B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0B43487E23ED9E47002EFE9B /* GFAlertViewController.swift */,
+				0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0B4348A523F1968A002EFE9B /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				0B43487223EC99F9002EFE9B /* GFButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		0B4348A623F19691002EFE9B /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				0B43487623EC9E67002EFE9B /* GFTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		0B4348A723F1969D002EFE9B /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				0B43487A23ED9BE6002EFE9B /* GFTitleLabel.swift */,
+				0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */,
+				0B43487C23ED9D66002EFE9B /* GFBodyLabel.swift */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B43488B23EDE965002EFE9B /* NetworkManager.swift in Sources */,
+				0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */,
 				0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */,
 				0B43487123EC9510002EFE9B /* FavouritesListViewController.swift in Sources */,
 				0B43489423F03BBD002EFE9B /* UIHelper.swift in Sources */,
@@ -277,6 +316,7 @@
 				0B43489B23F160F1002EFE9B /* EmptyStateView.swift in Sources */,
 				0B43488823EDE5E6002EFE9B /* User.swift in Sources */,
 				0B43489223F028EA002EFE9B /* GFAvatarImageView.swift in Sources */,
+				0B4348A423F1966E002EFE9B /* GFUserInfoHeaderViewController.swift in Sources */,
 				0B43488123EDB12F002EFE9B /* Alert.swift in Sources */,
 				0B43489D23F168AF002EFE9B /* StringNotEmpty.swift in Sources */,
 				0B43489623F14F12002EFE9B /* LoadingView.swift in Sources */,
