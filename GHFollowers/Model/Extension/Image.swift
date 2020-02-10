@@ -32,6 +32,6 @@ extension UIImage {
 
 extension UIImage.Name {
     static let avatarPlaceholder       = UIImage.Name(name: "avatar-placeholder")
-    static let emptryStateLogo         = UIImage.Name(name: "empty-state-logo")
+    static let emptyStateLogo         = UIImage.Name(name: "empty-state-logo")
     static let githubLogo              = UIImage.Name(name: "gh-logo")
 }
