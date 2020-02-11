@@ -9,6 +9,10 @@
 import UIKit
 
 enum SFSymbols {
-    static let sfLocation       = "mappin.and.ellipse"
+    static let location       = "mappin.and.ellipse"
+    static let repos          = "folder.fill"
+    static let gists          = "text.alignleft"
+    static let followers      = "heart.fill"
+    static let following      = "person.2.fill"
 }
 

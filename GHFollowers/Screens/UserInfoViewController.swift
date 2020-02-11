@@ -14,22 +14,16 @@ class UserInfoViewController: UIViewController {
     
     lazy var headerView: UIView = {
         let headerView = UIView()
-//        headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.backgroundColor = .systemPink
         return headerView
     }()
     
     lazy var itemViewOne: UIView = {
         let itemViewOne = UIView()
-//        itemViewOne.translatesAutoresizingMaskIntoConstraints = false
-        itemViewOne.backgroundColor = .systemBlue
         return itemViewOne
     }()
     
     lazy var itemViewTwo: UIView = {
         let itemViewTwo = UIView()
-//        itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
-        itemViewTwo.backgroundColor = .systemTeal
         return itemViewTwo
     }()
     
@@ -54,7 +48,12 @@ class UserInfoViewController: UIViewController {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let user): DispatchQueue.main.async { self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView) }
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView) // Adds the childVC to container
+                    self.add(childViewController: GFRepoItemViewController(user: user), to: self.itemViewOne)
+                    self.add(childViewController: GFFollowerItemViewController(user: user), to: self.itemViewTwo)
+                }
             case .failure(let error): self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
         }

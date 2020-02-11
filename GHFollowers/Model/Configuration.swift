@@ -9,8 +9,7 @@
 import UIKit
 
 struct Configuration {
-//    static let gfButtonCornerRadius: CGFloat        =  10\
-    
+    static let systemPinkAlpha: CGFloat = 0.7
     static let alertContentPadding: CGFloat = 20
 }
 
