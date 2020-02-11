@@ -14,18 +14,42 @@ class UserInfoViewController: UIViewController {
     
     lazy var headerView: UIView = {
         let headerView = UIView()
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-//        headerView.backgroundColor = .systemPink
+//        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.backgroundColor = .systemPink
         return headerView
     }()
+    
+    lazy var itemViewOne: UIView = {
+        let itemViewOne = UIView()
+//        itemViewOne.translatesAutoresizingMaskIntoConstraints = false
+        itemViewOne.backgroundColor = .systemBlue
+        return itemViewOne
+    }()
+    
+    lazy var itemViewTwo: UIView = {
+        let itemViewTwo = UIView()
+//        itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
+        itemViewTwo.backgroundColor = .systemTeal
+        return itemViewTwo
+    }()
+    
+    var itemViews: [UIView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureViewController()
+        layoutUI()
+        getUserInfo()
+    }
+    
+    private func configureViewController() {
         view.backgroundColor  = .systemBackground
-        
-        configureView()
-        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    private func getUserInfo() {
         guard let username = username else { return }
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
@@ -36,17 +60,30 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    private func configureView() {
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
-        navigationItem.rightBarButtonItem = doneButton
+    private func layoutUI() {
+        itemViews = [headerView, itemViewOne, itemViewTwo]
         
-        view.addSubview(headerView)
+        let padding: CGFloat = 20
+        let itemHeight: CGFloat = 140
         
+        for itemView in itemViews {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+            ])
+        }
+
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
     }
     
