@@ -31,7 +31,7 @@ class GFAlertVC: UIViewController {
         messageLabel.numberOfLines = 4
         return messageLabel
     }()
-    
+     
     lazy var actionButton: GFButton = {
         let actionButton = GFButton(backgroundColor: .systemPink, title: "OK")
         actionButton.setTitle(self.alertButtonTitle, for: .normal)

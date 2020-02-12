@@ -20,11 +20,10 @@ class GFButton: UIButton {
     }
     
     /// With this we can initialize a button quickly with its own color and title
-    init(backgroundColor: UIColor, title: String) {
-        super.init(frame: .zero)
+    convenience init(backgroundColor: UIColor, title: String) {
+        self.init(frame: .zero)
         self.backgroundColor =  backgroundColor
         self.setTitle(title, for: .normal)
-        configure()
     }
     
     private func configure() {

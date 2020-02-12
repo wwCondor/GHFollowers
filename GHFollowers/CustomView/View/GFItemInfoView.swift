@@ -42,9 +42,8 @@ class GFItemInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(message: String) {
-        super.init(frame: .zero)
-        configureView()
+    convenience init(message: String) {
+        self.init(frame: .zero)
     }
     
     private func configureView() {
