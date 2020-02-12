@@ -12,22 +12,22 @@ class GFUserInfoHeaderViewController: UIViewController {
     
     var user: User?
     
-    lazy var avatarImageView: GFAvatarImageView = {
+    private lazy var avatarImageView: GFAvatarImageView = {
         let avatarImageView = GFAvatarImageView(frame: .zero)
         return avatarImageView
     }()
 
-    lazy var usernameLabel: GFTitleLabel = {
+    private lazy var usernameLabel: GFTitleLabel = {
         let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 34)
         return usernameLabel
     }()
     
-    lazy var nameLabel: GFSecondaryTitleLabel = {
+    private lazy var nameLabel: GFSecondaryTitleLabel = {
         let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
         return nameLabel
     }()
     
-    lazy var locationImageView: UIImageView = {
+    private lazy var locationImageView: UIImageView = {
         let locationImageView = UIImageView()
         let locationImage = UIImage(systemName: SFSymbols.location)
         locationImageView.image = locationImage
@@ -37,12 +37,12 @@ class GFUserInfoHeaderViewController: UIViewController {
         return locationImageView
     }()
     
-    lazy var locationLabel: GFSecondaryTitleLabel = {
+    private lazy var locationLabel: GFSecondaryTitleLabel = {
         let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
         return locationLabel
     }()
     
-    lazy var bioLabel: GFBodyLabel = {
+    private lazy var bioLabel: GFBodyLabel = {
         let bioLabel = GFBodyLabel(textAlignment: .left)
         bioLabel.numberOfLines = 3
         return bioLabel

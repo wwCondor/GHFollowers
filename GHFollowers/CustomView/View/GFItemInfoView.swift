@@ -14,7 +14,7 @@ enum ItemInfoType {
 
 class GFItemInfoView: UIView {
     
-    lazy var symbolImageView: UIImageView = {
+    private lazy var symbolImageView: UIImageView = {
         let symbolImageView = UIImageView()
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         symbolImageView.contentMode = .scaleAspectFill
@@ -23,12 +23,12 @@ class GFItemInfoView: UIView {
         return symbolImageView
     }()
     
-    lazy var titleLabel: GFTitleLabel = {
+    private lazy var titleLabel: GFTitleLabel = {
         let titleLabel =  GFTitleLabel(textAlignment: .left, fontSize: 14)
         return titleLabel
     }()
     
-    lazy var countLabel: GFTitleLabel = {
+    private lazy var countLabel: GFTitleLabel = {
         let countLabel =  GFTitleLabel(textAlignment: .center, fontSize: 14)
         return countLabel
     }()

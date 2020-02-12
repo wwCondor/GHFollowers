@@ -12,7 +12,7 @@ class GFItemInfoViewController: UIViewController {
     
     var user: User?
     
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal

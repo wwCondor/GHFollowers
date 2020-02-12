@@ -14,6 +14,9 @@ enum GFError: Error {
     case noConnection
     case invalidResponse
     case invalidData
+    case invalidUrl
+    case unableToFavorite
+    case alreadyFavorite
 }
 
 extension GFError: LocalizedError {
@@ -24,6 +27,9 @@ extension GFError: LocalizedError {
         case .noConnection:          return "Unable to complete request. Please check your internet connection"
         case .invalidResponse:       return "Invalid response from server. Please try again."
         case .invalidData:           return "Data retrieved from server was invalid. Please try again."
+        case .invalidUrl:            return "The url attached to this user is invalid."
+        case .unableToFavorite:      return "There was an error favoriting user. Please try again."
+        case .alreadyFavorite:       return "You've already added this user to your favorites"
 
         }
     }

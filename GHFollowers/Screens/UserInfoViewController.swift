@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import SafariServices
 
 class UserInfoViewController: UIViewController {
     
@@ -53,23 +54,25 @@ class UserInfoViewController: UIViewController {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let user): DispatchQueue.main.async { self.configureUIElements(for: user) }
+            case .success(let user): self.configureUIElements(for: user)
             case .failure(let error): self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
         }
     }
     
     private func configureUIElements(for user: User) {
-        let repoItemViewController          = GFRepoItemViewController(user: user)
-        repoItemViewController.delegate     = self
-        
-        let followerItemViewController      = GFFollowerItemViewController(user: user)
-        followerItemViewController.delegate = self
-        
-        self.add(childViewController: repoItemViewController, to: self.itemViewOne)
-        self.add(childViewController: followerItemViewController, to: self.itemViewTwo)
-        self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-        self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+        DispatchQueue.main.async {
+            let repoItemViewController          = GFRepoItemViewController(user: user)
+            repoItemViewController.delegate     = self
+            
+            let followerItemViewController      = GFFollowerItemViewController(user: user)
+            followerItemViewController.delegate = self
+            
+            self.add(childViewController: repoItemViewController, to: self.itemViewOne)
+            self.add(childViewController: followerItemViewController, to: self.itemViewTwo)
+            self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+            self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+        }
     }
     
     private func layoutUI() {
@@ -127,7 +130,12 @@ class UserInfoViewController: UIViewController {
 
 extension UserInfoViewController: GitHubProfileTappable {
     func didTapGitHubProfile(for user: User) {
-        print("Profile Tapped")
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid URL", message: GFError.invalidUrl.localizedDescription, buttonTitle: "Ok")
+            return
+        }
+        presentSafariViewController(with: url)
+        
 //        guard let url = URL(string: user.htmlUrl) else {
 //            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid.", buttonTitle: "Ok")
 //            return
@@ -140,6 +148,11 @@ extension UserInfoViewController: GitHubProfileTappable {
 extension UserInfoViewController: GitHubFollowersTappable {
     func didTapGitHubFollowers(for user: User) {
         print("Followers Tapped")
+        
+        let followerListViewController = FollowerListViewController()
+        followerListViewController.username = user.login
+        followerListViewController.title = user.login
+        navigationController?.pushViewController(followerListViewController, animated: true)
 //        guard user.followers != 0 else {
 //            presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers. What a shame 😞.", buttonTitle: "So sad")
 //            return

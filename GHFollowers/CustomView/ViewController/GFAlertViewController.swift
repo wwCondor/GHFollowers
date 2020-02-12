@@ -32,7 +32,7 @@ class GFAlertViewController: UIViewController {
         return messageLabel
     }()
     
-    private lazy var actionButton: GFButton = {
+    lazy var actionButton: GFButton = {
         let actionButton = GFButton(backgroundColor: .systemPink, title: "OK")
         actionButton.setTitle(self.alertButtonTitle, for: .normal)
         actionButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)

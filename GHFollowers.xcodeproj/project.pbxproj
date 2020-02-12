@@ -12,6 +12,8 @@
 		0B15913423F2E7BE00A56071 /* GFRepoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B15913323F2E7BE00A56071 /* GFRepoItemViewController.swift */; };
 		0B15913623F2E7D700A56071 /* GFFollowerItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B15913523F2E7D700A56071 /* GFFollowerItemViewController.swift */; };
 		0B15913923F325BB00A56071 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B15913823F325BB00A56071 /* Date.swift */; };
+		0B15913B23F3ED7500A56071 /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B15913A23F3ED7500A56071 /* Safari.swift */; };
+		0B15913D23F3F8B300A56071 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B15913C23F3F8B300A56071 /* PersistenceManager.swift */; };
 		0B43485323EC8C8D002EFE9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43485223EC8C8D002EFE9B /* AppDelegate.swift */; };
 		0B43485523EC8C8D002EFE9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43485423EC8C8D002EFE9B /* SceneDelegate.swift */; };
 		0B43485C23EC8C8F002EFE9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B43485B23EC8C8F002EFE9B /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		0B15913323F2E7BE00A56071 /* GFRepoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemViewController.swift; sourceTree = "<group>"; };
 		0B15913523F2E7D700A56071 /* GFFollowerItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemViewController.swift; sourceTree = "<group>"; };
 		0B15913823F325BB00A56071 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0B15913A23F3ED7500A56071 /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
+		0B15913C23F3F8B300A56071 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0B43484F23EC8C8D002EFE9B /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B43485223EC8C8D002EFE9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B43485423EC8C8D002EFE9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,7 +187,7 @@
 				0B4348A023F190EA002EFE9B /* GFError.swift */,
 				0B43489323F03BBD002EFE9B /* UIHelper.swift */,
 				0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */,
-				0B43488923EDE949002EFE9B /* Networking */,
+				0B43488923EDE949002EFE9B /* Manager */,
 				0B43486D23EC92CA002EFE9B /* Extension */,
 			);
 			path = Model;
@@ -193,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				0B43488023EDB12F002EFE9B /* Alert.swift */,
+				0B15913A23F3ED7500A56071 /* Safari.swift */,
 				0B43489523F14F12002EFE9B /* LoadingView.swift */,
 				0B43489A23F160F1002EFE9B /* EmptyStateView.swift */,
 				0B43489C23F168AF002EFE9B /* StringNotEmpty.swift */,
@@ -202,12 +207,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		0B43488923EDE949002EFE9B /* Networking */ = {
+		0B43488923EDE949002EFE9B /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				0B43488A23EDE965002EFE9B /* NetworkManager.swift */,
+				0B15913C23F3F8B300A56071 /* PersistenceManager.swift */,
 			);
-			path = Networking;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		0B43488E23F027D0002EFE9B /* Cell */ = {
@@ -339,8 +345,10 @@
 				0B43488B23EDE965002EFE9B /* NetworkManager.swift in Sources */,
 				0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */,
 				0B4348AB23F1A1DE002EFE9B /* SFSymbols.swift in Sources */,
+				0B15913B23F3ED7500A56071 /* Safari.swift in Sources */,
 				0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */,
 				0B43487123EC9510002EFE9B /* FavouritesListViewController.swift in Sources */,
+				0B15913D23F3F8B300A56071 /* PersistenceManager.swift in Sources */,
 				0B43489423F03BBD002EFE9B /* UIHelper.swift in Sources */,
 				0B15913423F2E7BE00A56071 /* GFRepoItemViewController.swift in Sources */,
 				0B43486F23EC94D2002EFE9B /* SearchViewController.swift in Sources */,

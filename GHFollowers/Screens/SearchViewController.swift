@@ -91,6 +91,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     /// Gets called when user presses "Go" on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        usernameTextField.resignFirstResponder()
         pushFollowerListViewController()
         return true
     }

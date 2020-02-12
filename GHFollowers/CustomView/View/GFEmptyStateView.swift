@@ -10,19 +10,19 @@ import UIKit
 
 class GFEmptyStateView: UIView {
     
-    lazy var messageLabel: GFTitleLabel = {
+    private lazy var messageLabel: GFTitleLabel = {
         let messageLabel = GFTitleLabel(textAlignment: .center, fontSize: 28)
         messageLabel.numberOfLines = 3
         messageLabel.textColor = .secondaryLabel
         return messageLabel
     }()
     
-    lazy var logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: .emptyStateLogo)?.withRenderingMode(.alwaysTemplate)
         logoImageView.tintColor = .systemPink
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.alpha = 0.65
+        logoImageView.alpha = Configuration.systemPinkAlpha
         return logoImageView
     }()
     

@@ -8,6 +8,8 @@
 
 import UIKit
 
+enum LabelType { case title, secondary}
+
 class GFTitleLabel: UILabel {
 
     override init(frame: CGRect) {
@@ -29,7 +31,6 @@ class GFTitleLabel: UILabel {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         textColor = .label
-//        textAlignment = .center
         adjustsFontSizeToFitWidth = true 
         minimumScaleFactor = 0.9
         lineBreakMode = .byTruncatingTail

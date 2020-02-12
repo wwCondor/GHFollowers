@@ -12,12 +12,12 @@ class FollowerCell: UICollectionViewCell {
     
     static let identifier = "followerCellId"
     
-    lazy var avatarImageView: GFAvatarImageView = {
+    private lazy var avatarImageView: GFAvatarImageView = {
         let avatarImageView = GFAvatarImageView(frame: .zero)
         return avatarImageView
     }()
     
-    lazy var usernameLabel: GFTitleLabel = {
+    private lazy var usernameLabel: GFTitleLabel = {
         let usernameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
         return usernameLabel
     }()
