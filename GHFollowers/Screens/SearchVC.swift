@@ -44,12 +44,13 @@ class SearchVC: UIViewController {
     /// Gets called everytime view will appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        usernameTextField.text = ""
         navigationController?.isNavigationBarHidden = true
     }
     
     /// Adds tapGesture to background to dismiss Keyboard when tapped
     private func createDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
     
@@ -57,9 +58,7 @@ class SearchVC: UIViewController {
         guard isUsernameEntered else {
             presentGFAlertOnMainThread(title: "Empty Username", message: GFError.invalidUsername.localizedDescription, buttonTitle: "OK")
             return }
-        let followerListViewController = FollowerListViewController()
-        followerListViewController.username = usernameTextField.text
-        followerListViewController.title = usernameTextField.text
+        let followerListViewController = FollowerListViewController(username: usernameTextField.text!)
         navigationController?.pushViewController(followerListViewController, animated: true)
     }
     

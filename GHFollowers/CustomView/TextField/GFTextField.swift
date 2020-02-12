@@ -38,7 +38,7 @@ class GFTextField: UITextField {
         keyboardType = .default // sets keyboard type
         returnKeyType = .go
         autocapitalizationType = .none
-
+        clearButtonMode = .whileEditing // adds clearButton to textField when editing
         placeholder = "Enter a username"
     }
 }

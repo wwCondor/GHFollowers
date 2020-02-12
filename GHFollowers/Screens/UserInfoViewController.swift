@@ -117,17 +117,6 @@ class UserInfoViewController: UIViewController {
     }
 }
 
-//extension UserInfoViewController: GitHubProfileTappable {
-//    func didTapGitHubProfile(of user: User) {
-//        let followersViewController = FollowerListViewController(username: user.login)
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissViewController))
-//        followersViewController.navigationItem.rightBarButtonItem = doneButton
-//        followersViewController.title = user.login
-//        let navigationController = UINavigationController(rootViewController: followersViewController)
-//        present(navigationController, animated: true)
-//    }
-//}
-
 extension UserInfoViewController: GitHubProfileTappable {
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
@@ -135,13 +124,6 @@ extension UserInfoViewController: GitHubProfileTappable {
             return
         }
         presentSafariViewController(with: url)
-        
-//        guard let url = URL(string: user.htmlUrl) else {
-//            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid.", buttonTitle: "Ok")
-//            return
-//        }
-        
-//        presentSafariVC(with: url)
     }
 }
 
@@ -149,17 +131,7 @@ extension UserInfoViewController: GitHubFollowersTappable {
     func didTapGitHubFollowers(for user: User) {
         print("Followers Tapped")
         
-        let followerListViewController = FollowerListViewController()
-        followerListViewController.username = user.login
-        followerListViewController.title = user.login
-//        navigationController?.navigationBar.prefersLargeTitles = true
+        let followerListViewController = FollowerListViewController(username: user.login)
         navigationController?.pushViewController(followerListViewController, animated: true)
-//        guard user.followers != 0 else {
-//            presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers. What a shame 😞.", buttonTitle: "So sad")
-//            return
-//        }
-        
-//        delegate.didRequestFollowers(for: user.login)
-//        dismssVC()
     }
 }
