@@ -15,4 +15,3 @@ enum SFSymbols {
     static let followers      = "heart.fill"
     static let following      = "person.2.fill"
 }
-

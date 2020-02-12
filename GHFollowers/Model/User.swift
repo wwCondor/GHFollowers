@@ -21,4 +21,3 @@ struct User: Codable {
     let followers: Int
     let createdAt: Date
 }
- 

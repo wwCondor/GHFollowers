@@ -23,6 +23,8 @@ class FollowerListViewController: GFDataLoadingVC {
     var hasMoreFollowers = true
     var isSearching: Bool = false
     
+    var lastScrollPosition: CGFloat = 0
+    
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
     lazy var collectionView: UICollectionView = {
@@ -166,6 +168,40 @@ extension FollowerListViewController: UICollectionViewDelegate {
         destinationViewController.username = followerSelected.login
         let navigationController = UINavigationController(rootViewController: destinationViewController)
         present(navigationController, animated: true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastScrollPosition = scrollView.contentOffset.y
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if lastScrollPosition < scrollView.contentOffset.y {
+            /// We scrolled down, indicating user is browsing searchResults, so we hide searchBar
+//            collapseSearchBar()
+            self.navigationItem.hidesSearchBarWhenScrolling = true
+        } else if lastScrollPosition > scrollView.contentOffset.y {
+            /// We scrolled up, indicating user might want to edit search input
+//            expandSearchBar()
+            self.navigationItem.hidesSearchBarWhenScrolling = false
+        }
+    }
+    
+    private func collapseSearchBar() {
+//            UIView.animate(withDuration: 0.4,
+//                           delay: 0,
+//                           options: .curveEaseInOut,
+//                           animations: navigationItem.hidesSearchBarWhenScrolling = true,
+//                           completion: nil )
+    }
+    
+    private func expandSearchBar() {
+//            UIView.animate(withDuration: 0.4,
+//                           delay: 0,
+//                           options: .curveEaseInOut,
+//                           animations: self.reloadInputViews,
+//                           completion: { _ in
+//                            self.navigationItem.hidesSearchBarWhenScrolling = false
+//            })
     }
 }
 

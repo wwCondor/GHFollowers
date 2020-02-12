@@ -12,4 +12,3 @@ struct Configuration {
     static let systemPinkAlpha: CGFloat = 0.7
     static let alertContentPadding: CGFloat = 20
 }
-
