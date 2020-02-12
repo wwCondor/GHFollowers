@@ -67,11 +67,18 @@ class GFUserInfoHeaderViewController: UIViewController {
     
     private func configureUIForUser() {
         guard let user = user else { return }
-        avatarImageView.downloadImage(from: user.avatarUrl)
+        downloadAvatarImage(for: user)
         usernameLabel.text = user.login
         nameLabel.text = user.name ?? ""
         locationLabel.text = user.location ?? "No location"
         bioLabel.text = user.bio ?? "No available bio"
+    }
+    
+    private func downloadAvatarImage(for user: User) {
+        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+        }
     }
     
     private func configureView() {
