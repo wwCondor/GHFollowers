@@ -48,9 +48,11 @@ class GFUserInfoHeaderViewController: UIViewController {
         return bioLabel
     }()
     
-    convenience init(user: User) {
-        self.init(nibName: nil, bundle: nil)
+    init(user: User) {
+        super.init(nibName: nil, bundle: nil)
         self.user = user
+        configureView()
+        configureUIForUser()
     }
      
     required init?(coder: NSCoder) {
