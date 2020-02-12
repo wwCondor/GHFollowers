@@ -60,9 +60,7 @@ class GFAlertVC: UIViewController {
     
     private func configureView() {
         view.addSubview(containerView)
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(messageLabel)
-        containerView.addSubview(actionButton)
+        containerView.addSubviews(titleLabel, messageLabel, actionButton)
         
         let padding: CGFloat = 20
         

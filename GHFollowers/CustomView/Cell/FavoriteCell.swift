@@ -40,8 +40,7 @@ class FavoriteCell: UITableViewCell {
     }
     
     private func configureView() {
-        addSubview(avatarImageView)
-        addSubview(usernameLabel)
+        addSubviews(avatarImageView, usernameLabel)
         
         accessoryType = .disclosureIndicator /// Adds small indicator that this is tappable
         

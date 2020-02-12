@@ -63,9 +63,7 @@ class SearchVC: UIViewController {
     }
     
     private func configureView() {
-        view.addSubview(logoImageView)
-        view.addSubview(usernameTextField)
-        view.addSubview(callToActionButton)
+        view.addSubviews(logoImageView, usernameTextField, callToActionButton)
         
         let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
         

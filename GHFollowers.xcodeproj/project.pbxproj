@@ -46,6 +46,7 @@
 		0B4348AB23F1A1DE002EFE9B /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */; };
 		0B73ED0D23F477A4005E503F /* GFImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73ED0C23F477A4005E503F /* GFImages.swift */; };
 		0B73ED0F23F479D9005E503F /* AlphaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73ED0E23F479D9005E503F /* AlphaConfiguration.swift */; };
+		0B73ED1123F4852A005E503F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73ED1023F4852A005E503F /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		0B73ED0C23F477A4005E503F /* GFImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImages.swift; sourceTree = "<group>"; };
 		0B73ED0E23F479D9005E503F /* AlphaConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaConfiguration.swift; sourceTree = "<group>"; };
+		0B73ED1023F4852A005E503F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				0B43489C23F168AF002EFE9B /* StringNotEmpty.swift */,
 				0B15913823F325BB00A56071 /* Date.swift */,
 				0B15915123F44D9A00A56071 /* UIViewController+Ext.swift */,
+				0B73ED1023F4852A005E503F /* UIView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -244,10 +247,10 @@
 		0B4348A223F19643002EFE9B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0B15913723F2EA4000A56071 /* ItemInfoViewControllers */,
 				0B15914F23F44D1A00A56071 /* GFDataLoadingVC.swift */,
 				0B15914423F4285B00A56071 /* GFAlertVC.swift */,
 				0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */,
-				0B15913723F2EA4000A56071 /* ItemInfoViewControllers */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				0B15914C23F4388700A56071 /* DeviceType+ScreenSize.swift in Sources */,
 				0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */,
 				0B73ED0D23F477A4005E503F /* GFImages.swift in Sources */,
+				0B73ED1123F4852A005E503F /* UIView+Ext.swift in Sources */,
 				0B4348AB23F1A1DE002EFE9B /* SFSymbols.swift in Sources */,
 				0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */,
 				0B43487123EC9510002EFE9B /* FavoritesListViewController.swift in Sources */,
