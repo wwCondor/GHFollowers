@@ -1,12 +1,13 @@
 //
-//  Alert.swift
+//  UIViewController+Ext.swift
 //  GHFollowers
 //
-//  Created by Wouter Willebrands on 07/02/2020.
+//  Created by Wouter Willebrands on 12/02/2020.
 //  Copyright © 2020 CodingCondor. All rights reserved.
 //
 
 import UIKit
+import SafariServices
 
 extension UIViewController {
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
@@ -16,5 +17,12 @@ extension UIViewController {
             alertViewController.modalTransitionStyle = .crossDissolve
             self.present(alertViewController, animated: true)
         }
+    }
+    
+    func presentSafariViewController(with url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.preferredControlTintColor = .systemPink
+        present(safariViewController, animated: true)
+    
     }
 }

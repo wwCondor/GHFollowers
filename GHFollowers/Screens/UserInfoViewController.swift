@@ -9,7 +9,7 @@
 import UIKit
 //import SafariServices
 
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: GFDataLoadingVC {
     
     var username: String?
     

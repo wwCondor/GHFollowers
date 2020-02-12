@@ -8,13 +8,13 @@
 
 import UIKit
 
+/// This section is used to to adjust layout for specific iPhone sizes that would otherwise cause UI issues
 enum ScreenSize {
     static let width        = UIScreen.main.bounds.size.width
     static let height       = UIScreen.main.bounds.size.height
     static let maxLength    = max(ScreenSize.width, ScreenSize.height)
     static let minLength    = min(ScreenSize.width, ScreenSize.height)
 }
-
 
 enum DeviceTypes {
     static let idiom                    = UIDevice.current.userInterfaceIdiom
