@@ -64,25 +64,27 @@ class GFAlertVC: UIViewController {
         containerView.addSubview(messageLabel)
         containerView.addSubview(actionButton)
         
+        let padding: CGFloat = 20
+        
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.widthAnchor.constraint(equalToConstant: 280),
             containerView.heightAnchor.constraint(equalToConstant: 220),
             
-            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Configuration.alertContentPadding),
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Configuration.alertContentPadding),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Configuration.alertContentPadding),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             titleLabel.heightAnchor.constraint(equalToConstant: 28),
             
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Configuration.alertContentPadding),
-            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Configuration.alertContentPadding),
+            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12),
             
-            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Configuration.alertContentPadding),
-            actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Configuration.alertContentPadding),
-            actionButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Configuration.alertContentPadding),
+            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+            actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            actionButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             actionButton.heightAnchor.constraint(equalToConstant: 44),
         ])
     }

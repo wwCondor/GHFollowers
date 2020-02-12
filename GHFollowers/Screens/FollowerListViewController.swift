@@ -205,21 +205,17 @@ extension FollowerListViewController: UICollectionViewDelegate {
     }
 }
 
-extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListViewController: UISearchResultsUpdating {
     /// Anytime the search bar input has changes this will inform the viewController
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, filter.isNotEmpty else {
+            isSearching = false
+            filteredFollowers.removeAll()
             updateData(on: followers)
             return
         }
         isSearching = true
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        filteredFollowers.removeAll()
-        updateData(on: followers)
     }
 }

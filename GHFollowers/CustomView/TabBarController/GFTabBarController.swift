@@ -21,7 +21,7 @@ class GFTabBarController: UITabBarController {
     private func configureTabBarAppearance() {
         let tabBarAppearance = UITabBar.appearance()
         tabBarAppearance.tintColor = .systemPink
-        tabBarAppearance.alpha = Configuration.systemPinkAlpha
+        tabBarAppearance.alpha = AlphaConfiguration.systemPinkAlpha
     }
     
     /// Creates the UINavigationController

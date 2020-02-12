@@ -58,10 +58,6 @@ class GFItemInfoVC: UIViewController {
         view.backgroundColor = .secondarySystemBackground
     }
     
-//    private func configureActionButton() {
-//        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
-//    }
-    
     @objc func actionButtonTapped() { }
     
     private func layoutUI() {

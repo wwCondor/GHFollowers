@@ -29,10 +29,9 @@ class GFUserInfoHeaderViewController: UIViewController {
     
     private lazy var locationImageView: UIImageView = {
         let locationImageView = UIImageView()
-        let locationImage = SFSymbols.location
-        locationImageView.image = locationImage
+        locationImageView.image = SFSymbols.location
         locationImageView.tintColor = .systemPink
-        locationImageView.alpha = Configuration.systemPinkAlpha
+        locationImageView.alpha = AlphaConfiguration.systemPinkAlpha
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
         return locationImageView
     }()
@@ -51,7 +50,7 @@ class GFUserInfoHeaderViewController: UIViewController {
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
-        configureView()
+        configureView() 
         configureUIForUser()
     }
      

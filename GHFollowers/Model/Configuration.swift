@@ -6,9 +6,4 @@
 //  Copyright © 2020 CodingCondor. All rights reserved.
 //
 
-import UIKit
 
-struct Configuration {
-    static let systemPinkAlpha: CGFloat = 0.7
-    static let alertContentPadding: CGFloat = 20
-}

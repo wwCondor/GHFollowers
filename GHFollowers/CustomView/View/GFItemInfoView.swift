@@ -19,7 +19,7 @@ class GFItemInfoView: UIView {
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor = .systemPink
-        symbolImageView.alpha = Configuration.systemPinkAlpha
+        symbolImageView.alpha = AlphaConfiguration.systemPinkAlpha
         return symbolImageView
     }()
     

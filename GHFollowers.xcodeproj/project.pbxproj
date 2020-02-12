@@ -26,7 +26,6 @@
 		0B43485F23EC8C8F002EFE9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B43485D23EC8C8F002EFE9B /* LaunchScreen.storyboard */; };
 		0B43487123EC9510002EFE9B /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487023EC9510002EFE9B /* FavoritesListViewController.swift */; };
 		0B43487323EC99F9002EFE9B /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487223EC99F9002EFE9B /* GFButton.swift */; };
-		0B43487523EC9B1B002EFE9B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487423EC9B1B002EFE9B /* Configuration.swift */; };
 		0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487623EC9E67002EFE9B /* GFTextField.swift */; };
 		0B43487923ED92C9002EFE9B /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */; };
 		0B43487B23ED9BE6002EFE9B /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43487A23ED9BE6002EFE9B /* GFTitleLabel.swift */; };
@@ -45,8 +44,8 @@
 		0B4348A423F1966E002EFE9B /* GFUserInfoHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */; };
 		0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */; };
 		0B4348AB23F1A1DE002EFE9B /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */; };
-		0B4348AD23F1A312002EFE9B /* AssetsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348AC23F1A312002EFE9B /* AssetsImage.swift */; };
 		0B73ED0D23F477A4005E503F /* GFImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73ED0C23F477A4005E503F /* GFImages.swift */; };
+		0B73ED0F23F479D9005E503F /* AlphaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73ED0E23F479D9005E503F /* AlphaConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +70,6 @@
 		0B43486023EC8C8F002EFE9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B43487023EC9510002EFE9B /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		0B43487223EC99F9002EFE9B /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
-		0B43487423EC9B1B002EFE9B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		0B43487623EC9E67002EFE9B /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
 		0B43487A23ED9BE6002EFE9B /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
@@ -90,8 +88,8 @@
 		0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderViewController.swift; sourceTree = "<group>"; };
 		0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
-		0B4348AC23F1A312002EFE9B /* AssetsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsImage.swift; sourceTree = "<group>"; };
 		0B73ED0C23F477A4005E503F /* GFImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImages.swift; sourceTree = "<group>"; };
+		0B73ED0E23F479D9005E503F /* AlphaConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +191,7 @@
 			children = (
 				0B43488523EDE519002EFE9B /* Follower.swift */,
 				0B43488723EDE5E6002EFE9B /* User.swift */,
-				0B43487423EC9B1B002EFE9B /* Configuration.swift */,
+				0B73ED0E23F479D9005E503F /* AlphaConfiguration.swift */,
 				0B4348A023F190EA002EFE9B /* GFError.swift */,
 				0B43489323F03BBD002EFE9B /* UIHelper.swift */,
 				0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */,
@@ -209,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				0B43489C23F168AF002EFE9B /* StringNotEmpty.swift */,
-				0B4348AC23F1A312002EFE9B /* AssetsImage.swift */,
 				0B15913823F325BB00A56071 /* Date.swift */,
 				0B15915123F44D9A00A56071 /* UIViewController+Ext.swift */,
 			);
@@ -352,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B15913223F2E1E600A56071 /* GFItemInfoVC.swift in Sources */,
+				0B73ED0F23F479D9005E503F /* AlphaConfiguration.swift in Sources */,
 				0B43488B23EDE965002EFE9B /* NetworkManager.swift in Sources */,
 				0B15914C23F4388700A56071 /* DeviceType+ScreenSize.swift in Sources */,
 				0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */,
@@ -372,7 +370,6 @@
 				0B43487923ED92C9002EFE9B /* FollowerListViewController.swift in Sources */,
 				0B15913923F325BB00A56071 /* Date.swift in Sources */,
 				0B4348A123F190EA002EFE9B /* GFError.swift in Sources */,
-				0B4348AD23F1A312002EFE9B /* AssetsImage.swift in Sources */,
 				0B43488823EDE5E6002EFE9B /* User.swift in Sources */,
 				0B43489223F028EA002EFE9B /* GFAvatarImageView.swift in Sources */,
 				0B4348A423F1966E002EFE9B /* GFUserInfoHeaderViewController.swift in Sources */,
@@ -388,7 +385,6 @@
 				0B15912F23F2DBD400A56071 /* GFItemInfoView.swift in Sources */,
 				0B15914323F427D800A56071 /* GFFollowerItemVC.swift in Sources */,
 				0B15915023F44D1A00A56071 /* GFDataLoadingVC.swift in Sources */,
-				0B43487523EC9B1B002EFE9B /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
