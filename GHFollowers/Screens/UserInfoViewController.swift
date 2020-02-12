@@ -152,6 +152,7 @@ extension UserInfoViewController: GitHubFollowersTappable {
         let followerListViewController = FollowerListViewController()
         followerListViewController.username = user.login
         followerListViewController.title = user.login
+//        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.pushViewController(followerListViewController, animated: true)
 //        guard user.followers != 0 else {
 //            presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers. What a shame 😞.", buttonTitle: "So sad")
