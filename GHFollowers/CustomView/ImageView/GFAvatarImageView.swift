@@ -23,6 +23,6 @@ class GFAvatarImageView: UIImageView {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
-        image = UIImage(named: .avatarPlaceholder)
+        image = GFImages.avatarPlaceholder
     }
 }

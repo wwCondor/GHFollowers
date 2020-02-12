@@ -19,7 +19,7 @@ class GFEmptyStateView: UIView {
     
     private lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: .emptyStateLogo)?.withRenderingMode(.alwaysTemplate)
+        logoImageView.image = GFImages.emptyStateLogo
         logoImageView.tintColor = .systemPink
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.alpha = Configuration.systemPinkAlpha

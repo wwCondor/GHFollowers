@@ -16,7 +16,7 @@ class SearchVC: UIViewController {
     private lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: .githubLogo)
+        logoImageView.image = GFImages.githubLogo
         return logoImageView
     }()
     

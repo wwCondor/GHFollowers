@@ -46,6 +46,7 @@
 		0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */; };
 		0B4348AB23F1A1DE002EFE9B /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */; };
 		0B4348AD23F1A312002EFE9B /* AssetsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4348AC23F1A312002EFE9B /* AssetsImage.swift */; };
+		0B73ED0D23F477A4005E503F /* GFImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73ED0C23F477A4005E503F /* GFImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		0B4348AC23F1A312002EFE9B /* AssetsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsImage.swift; sourceTree = "<group>"; };
+		0B73ED0C23F477A4005E503F /* GFImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				0B4348A023F190EA002EFE9B /* GFError.swift */,
 				0B43489323F03BBD002EFE9B /* UIHelper.swift */,
 				0B4348AA23F1A1DE002EFE9B /* SFSymbols.swift */,
+				0B73ED0C23F477A4005E503F /* GFImages.swift */,
 				0B15914B23F4388700A56071 /* DeviceType+ScreenSize.swift */,
 				0B43488923EDE949002EFE9B /* Manager */,
 				0B43486D23EC92CA002EFE9B /* Extension */,
@@ -352,6 +355,7 @@
 				0B43488B23EDE965002EFE9B /* NetworkManager.swift in Sources */,
 				0B15914C23F4388700A56071 /* DeviceType+ScreenSize.swift in Sources */,
 				0B4348A923F19783002EFE9B /* GFSecondaryTitleLabel.swift in Sources */,
+				0B73ED0D23F477A4005E503F /* GFImages.swift in Sources */,
 				0B4348AB23F1A1DE002EFE9B /* SFSymbols.swift in Sources */,
 				0B43487723EC9E67002EFE9B /* GFTextField.swift in Sources */,
 				0B43487123EC9510002EFE9B /* FavoritesListViewController.swift in Sources */,
