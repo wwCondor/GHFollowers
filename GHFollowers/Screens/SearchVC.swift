@@ -1,14 +1,14 @@
 //
-//  SearchViewController.swift
+//  SearchVC.swift
 //  GHFollowers
 //
-//  Created by Wouter Willebrands on 06/02/2020.
+//  Created by Wouter Willebrands on 12/02/2020.
 //  Copyright © 2020 CodingCondor. All rights reserved.
 //
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchVC: UIViewController {
     
     var isUsernameEntered: Bool {
         return !usernameTextField.text!.isEmpty
@@ -88,7 +88,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchVC: UITextFieldDelegate {
     /// Gets called when user presses "Go" on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         usernameTextField.resignFirstResponder()
