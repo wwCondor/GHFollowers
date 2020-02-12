@@ -1,8 +1,8 @@
 //
-//  GFAlertViewController.swift
+//  GFAlertVC.swift
 //  GHFollowers
 //
-//  Created by Wouter Willebrands on 07/02/2020.
+//  Created by Wouter Willebrands on 12/02/2020.
 //  Copyright © 2020 CodingCondor. All rights reserved.
 //
 

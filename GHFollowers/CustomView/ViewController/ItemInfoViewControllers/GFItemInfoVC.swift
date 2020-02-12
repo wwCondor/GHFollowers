@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GFItemInfoViewController: UIViewController {
+class GFItemInfoVC: UIViewController {
     
     var user: User?
     
