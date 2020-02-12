@@ -69,7 +69,7 @@ class GFUserInfoHeaderViewController: UIViewController {
         guard let user = user else { return }
         avatarImageView.downloadImage(from: user.avatarUrl)
         usernameLabel.text = user.login
-        nameLabel.text = user.name ?? "-"
+        nameLabel.text = user.name ?? ""
         locationLabel.text = user.location ?? "No location"
         bioLabel.text = user.bio ?? "No available bio"
     }

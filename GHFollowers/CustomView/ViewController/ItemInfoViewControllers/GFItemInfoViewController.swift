@@ -32,6 +32,7 @@ class GFItemInfoViewController: UIViewController {
     
     lazy var actionButton: GFButton = {
         let actionButton = GFButton()
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         return actionButton
     }()
     
@@ -49,12 +50,19 @@ class GFItemInfoViewController: UIViewController {
         configureBackgroundView()
         layoutUI()
         configureStackViewContent()
+        
     }
     
     private func configureBackgroundView() {
         view.layer.cornerRadius = 18
         view.backgroundColor = .secondarySystemBackground
     }
+    
+//    private func configureActionButton() {
+//        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+//    }
+    
+    @objc func actionButtonTapped() { }
     
     private func layoutUI() {
         view.addSubview(stackView)
