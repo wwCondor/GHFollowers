@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol FollowerListViewControllerDelegate: class {
-    func didRequestFollowers(for username: String)
-}
+//protocol FollowerListViewControllerDelegate: class {
+//    func didRequestFollowers(for username: String)
+//}
 
 class FollowerListViewController: GFDataLoadingVC {
     
@@ -20,10 +20,9 @@ class FollowerListViewController: GFDataLoadingVC {
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
     var page: Int = 1
-    var hasMoreFollowers = true
+    var hasMoreFollowers: Bool = true
     var isSearching: Bool = false
     var isLoadingMoreFollowers: Bool = false
-    
     var lastScrollPosition: CGFloat = 0
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -95,12 +94,12 @@ class FollowerListViewController: GFDataLoadingVC {
                 if followers.count < 100 { self.hasMoreFollowers = false }
                 self.followers.append(contentsOf: followers)
                 if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow! ☺️"
+                    let message = "This user doesn't have any followers. You could be the first! ☺️"
                     DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
                     return
                 }
                 self.updateData(on: self.followers)
-//                DispatchQueue.main.async { self.updateSearchResults(for: self.searchController) }
+                DispatchQueue.main.async { self.updateSearchResults(for: self.searchController) }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
@@ -118,6 +117,7 @@ class FollowerListViewController: GFDataLoadingVC {
     
     private func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
+        snapshot.deleteAllItems()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
@@ -165,11 +165,12 @@ extension FollowerListViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let activeArray  = isSearching ? filteredFollowers : followers // true : false condition ( W ? T : F )
-        let followerSelected = activeArray[indexPath.item]
-        let destinationViewController = UserInfoViewController()
-        destinationViewController.username = followerSelected.login
-        let navigationController = UINavigationController(rootViewController: destinationViewController)
+        let activeArray                      = isSearching ? filteredFollowers : followers // true : false condition ( W ? T : F )
+        let selectedFollower                 = activeArray[indexPath.item]
+        let destinationVC                    = UserInfoViewController()
+        destinationVC.username               = selectedFollower.login
+        destinationVC.delegate               = self
+        let navigationController             = UINavigationController(rootViewController: destinationVC)
         present(navigationController, animated: true)
     }
     
@@ -211,14 +212,48 @@ extension FollowerListViewController: UICollectionViewDelegate {
 extension FollowerListViewController: UISearchResultsUpdating {
     /// Anytime the search bar input has changes this will inform the viewController
     func updateSearchResults(for searchController: UISearchController) {
+        
+//        updateData(on: followers)
+//
+//        print("update SearchResulsts triggered")
+//        guard let filter = searchController.searchBar.text, filter.isNotEmpty else {
+//            print("triggered delete")
+//            filteredFollowers.removeAll()
+//            isSearching = false
+//            print("isSearching \(isSearching)")
+//            return
+//        }
+//        isSearching = true
+//        print("isSearching \(isSearching)")
+//        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+//        updateData(on: filteredFollowers)
+        
+        
+        print("update SearchResulsts triggered")
         guard let filter = searchController.searchBar.text, filter.isNotEmpty else {
-            isSearching = false
+            print("triggered delete")
             filteredFollowers.removeAll()
             updateData(on: followers)
+            isSearching = false
+            print("isSearching \(isSearching)")
             return
         }
         isSearching = true
+        print("isSearching \(isSearching)")
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
+    }
+    
+}
+
+extension FollowerListViewController: UserInfoVCDelegate {
+    func didRequestFollowers(for username: String) {
+        self.username   = username
+        title           = username
+        page            = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        getFollowers(username: username, page: page)
     }
 }

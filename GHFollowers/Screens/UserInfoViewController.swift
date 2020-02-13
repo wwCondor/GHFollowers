@@ -7,11 +7,15 @@
 //
 
 import UIKit
-//import SafariServices
+
+protocol UserInfoVCDelegate: class {
+    func didRequestFollowers(for username: String)
+}
 
 class UserInfoViewController: GFDataLoadingVC {
     
     var username: String?
+    weak var delegate: UserInfoVCDelegate!
     
     lazy var headerView: UIView = {
         let headerView = UIView()
@@ -62,14 +66,8 @@ class UserInfoViewController: GFDataLoadingVC {
     
     private func configureUIElements(for user: User) {
         DispatchQueue.main.async {
-            let repoItemViewController          = GFRepoItemVC(user: user)
-            repoItemViewController.delegate     = self
-            
-            let followerItemViewController      = GFFollowerItemVC(user: user)
-            followerItemViewController.delegate = self
-            
-            self.add(childViewController: repoItemViewController, to: self.itemViewOne)
-            self.add(childViewController: followerItemViewController, to: self.itemViewTwo)
+            self.add(childViewController: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
+            self.add(childViewController: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
             self.add(childViewController: GFUserInfoHeaderViewController(user: user), to: self.headerView)
             self.dateLabel.text = "GitHub since \(user.createdAt.convertToMonthYearFormat())"
         }
@@ -101,7 +99,7 @@ class UserInfoViewController: GFDataLoadingVC {
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
             
             dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 22)
         ])
     }
     
@@ -117,7 +115,7 @@ class UserInfoViewController: GFDataLoadingVC {
     }
 }
 
-extension UserInfoViewController: GitHubProfileTappable {
+extension UserInfoViewController: GitHubProfileDelegate {
     func didTapGitHubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlertOnMainThread(title: "Invalid URL", message: GFError.invalidUrl.localizedDescription, buttonTitle: "Ok")
@@ -127,11 +125,17 @@ extension UserInfoViewController: GitHubProfileTappable {
     }
 }
 
-extension UserInfoViewController: GitHubFollowersTappable {
+extension UserInfoViewController: GitHubFollowersDelegate {
     func didTapGitHubFollowers(for user: User) {
-        print("Followers Tapped")
-        
-        let followerListViewController = FollowerListViewController(username: user.login)
-        navigationController?.pushViewController(followerListViewController, animated: true)
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No followers", message: GFError.noFollowers.localizedDescription, buttonTitle: "Ok")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dismissViewController() 
+//        print("Followers Tapped")
+//
+//        let followerListViewController = FollowerListViewController(username: user.login)
+//        navigationController?.pushViewController(followerListViewController, animated: true)
     }
 }

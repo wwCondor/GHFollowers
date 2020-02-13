@@ -79,7 +79,6 @@ class GFItemInfoVC: UIViewController {
     }
     
     private func configureStackViewContent() {
-        stackView.addArrangedSubview(itemInfoViewOne)
-        stackView.addArrangedSubview(itemInfoViewTwo)
+        stackView.addArrangedSubviews(itemInfoViewOne, itemInfoViewTwo)
     }
 }

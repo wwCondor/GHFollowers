@@ -17,6 +17,7 @@ enum GFError: Error {
     case invalidUrl
     case unableToFavorite
     case alreadyFavorite
+    case noFollowers
 }
 
 extension GFError: LocalizedError {
@@ -30,6 +31,7 @@ extension GFError: LocalizedError {
         case .invalidUrl:            return "The url attached to this user is invalid."
         case .unableToFavorite:      return "There was an error favoriting user. Please try again."
         case .alreadyFavorite:       return "You've already added this user to your favorites"
+        case .noFollowers:           return "The user you selected has no followers. What a shame 😟"
 
         }
     }
