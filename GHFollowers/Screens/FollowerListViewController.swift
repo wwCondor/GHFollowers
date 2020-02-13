@@ -17,13 +17,13 @@ class FollowerListViewController: GFDataLoadingVC {
     enum Section { case main }
     
     var username: String?
-    var followers: [Follower] = []
+    var followers: [Follower]         = []
     var filteredFollowers: [Follower] = []
-    var page: Int = 1
-    var hasMoreFollowers: Bool = true
-    var isSearching: Bool = false
-    var isLoadingMoreFollowers: Bool = false
-    var lastScrollPosition: CGFloat = 0
+    var page: Int                     = 1
+    var hasMoreFollowers: Bool        = true
+    var isSearching: Bool             = false
+    var isLoadingMoreFollowers: Bool  = false
+    var lastScrollPosition: CGFloat   = 0
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -90,21 +90,23 @@ class FollowerListViewController: GFDataLoadingVC {
             guard let self = self else { return }
             self.dismissLoadingView()
             switch result {
-            case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                self.followers.append(contentsOf: followers)
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. You could be the first! ☺️"
-                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                    return
-                }
-                self.updateData(on: self.followers)
-                DispatchQueue.main.async { self.updateSearchResults(for: self.searchController) }
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
+            case .success(let followers): self.updateUI(with: followers)
+            case .failure(let error): self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
             self.isLoadingMoreFollowers = false
         }
+    }
+    
+    private func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers. You could be the first! ☺️"
+            DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+            return
+        }
+        updateData(on: self.followers)
+        DispatchQueue.main.async { self.updateSearchResults(for: self.searchController) }
     }
     
     private func configureDataSource() {
@@ -131,20 +133,21 @@ class FollowerListViewController: GFDataLoadingVC {
             
             self.dismissLoadingView()
             switch result {
-                
-            case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Succes!", message: "You have succesfully added \(favorite.login) to favorites 🎉", buttonTitle: "Yay!")
-                        return
-                    }
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
-                }
-                
+            case .success(let user): self.addUserToFavorites(user: user)
             case .failure(let error): self.presentGFAlertOnMainThread(title: "Networking Error", message: error.localizedDescription, buttonTitle: "Ok")
             }
+        }
+    }
+    
+    private func addUserToFavorites(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+            guard let self = self else { return }
+            guard let error = error else {
+                self.presentGFAlertOnMainThread(title: "Succes!", message: "You have succesfully added \(favorite.login) to favorites 🎉", buttonTitle: "Yay!")
+                return
+            }
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
         }
     }
 }
@@ -212,38 +215,16 @@ extension FollowerListViewController: UICollectionViewDelegate {
 extension FollowerListViewController: UISearchResultsUpdating {
     /// Anytime the search bar input has changes this will inform the viewController
     func updateSearchResults(for searchController: UISearchController) {
-        
-//        updateData(on: followers)
-//
-//        print("update SearchResulsts triggered")
-//        guard let filter = searchController.searchBar.text, filter.isNotEmpty else {
-//            print("triggered delete")
-//            filteredFollowers.removeAll()
-//            isSearching = false
-//            print("isSearching \(isSearching)")
-//            return
-//        }
-//        isSearching = true
-//        print("isSearching \(isSearching)")
-//        filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
-//        updateData(on: filteredFollowers)
-        
-        
-        print("update SearchResulsts triggered")
         guard let filter = searchController.searchBar.text, filter.isNotEmpty else {
-            print("triggered delete")
             filteredFollowers.removeAll()
             updateData(on: followers)
             isSearching = false
-            print("isSearching \(isSearching)")
             return
         }
         isSearching = true
-        print("isSearching \(isSearching)")
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollowers)
     }
-    
 }
 
 extension FollowerListViewController: UserInfoVCDelegate {

@@ -12,15 +12,8 @@ class FollowerCell: UICollectionViewCell {
     
     static let identifier = "followerCellId"
     
-    private lazy var avatarImageView: GFAvatarImageView = {
-        let avatarImageView = GFAvatarImageView(frame: .zero)
-        return avatarImageView
-    }()
-    
-    private lazy var usernameLabel: GFTitleLabel = {
-        let usernameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
-        return usernameLabel
-    }()
+    private let avatarImageView = GFAvatarImageView(frame: .zero)
+    private let usernameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +31,6 @@ class FollowerCell: UICollectionViewCell {
     
     private func configureView() {
         addSubviews(avatarImageView, usernameLabel)
-        
         let padding: CGFloat = 8
         
         NSLayoutConstraint.activate([

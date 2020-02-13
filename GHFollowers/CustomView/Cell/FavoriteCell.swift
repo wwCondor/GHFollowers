@@ -12,15 +12,8 @@ class FavoriteCell: UITableViewCell {
     
     static let identifier = "favoriteCellId"
 
-    private lazy var avatarImageView: GFAvatarImageView = {
-        let avatarImageView = GFAvatarImageView(frame: .zero)
-        return avatarImageView
-    }()
-    
-    private lazy var usernameLabel: GFTitleLabel = {
-        let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 26)
-        return usernameLabel
-    }()
+    private let avatarImageView = GFAvatarImageView(frame: .zero)
+    private let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 26)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,10 +31,8 @@ class FavoriteCell: UITableViewCell {
     
     private func configureView() {
         addSubviews(avatarImageView, usernameLabel)
-        
-        accessoryType = .disclosureIndicator /// Adds small indicator that this is tappable
-        
         let padding: CGFloat = 12
+        accessoryType        = .disclosureIndicator /// Adds small indicator that this is tappable
         
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),

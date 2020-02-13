@@ -44,20 +44,20 @@ class FavoritesListViewController: GFDataLoadingVC {
         PersistenceManager.retrieveFavorites { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyStateView(with: "No favorites?\nYou can add one on the follower screen", in: self.view)
-                } else {
-                    self.favorites = favorites
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView) // In case emptyStateView gets called first this brings tableView to front
-                    }
-                }
-                
-                
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
+            case .success(let favorites): self.updateUI(with: favorites)
+            case .failure(let error): self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
+            }
+        }
+    }
+    
+    private func updateUI(with favorites: [Follower]) {
+        if favorites.isEmpty {
+            self.showEmptyStateView(with: "No favorites?\nYou can add one on the follower screen", in: self.view)
+        } else {
+            self.favorites = favorites
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.view.bringSubviewToFront(self.tableView) // In case emptyStateView gets called first this brings tableView to front
             }
         }
     }
@@ -76,9 +76,9 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let favorite = favorites[indexPath.row]
-        let destinationViewController = FollowerListViewController(username: favorite.login)
-        navigationController?.pushViewController(destinationViewController, animated: true)
+        let favorite      = favorites[indexPath.row]
+        let destinationVC = FollowerListViewController(username: favorite.login)
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

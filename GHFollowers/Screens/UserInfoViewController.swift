@@ -133,9 +133,5 @@ extension UserInfoViewController: GitHubFollowersDelegate {
         }
         delegate.didRequestFollowers(for: user.login)
         dismissViewController() 
-//        print("Followers Tapped")
-//
-//        let followerListViewController = FollowerListViewController(username: user.login)
-//        navigationController?.pushViewController(followerListViewController, animated: true)
     }
 }

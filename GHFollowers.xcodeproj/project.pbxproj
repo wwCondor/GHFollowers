@@ -171,8 +171,8 @@
 			children = (
 				0B15914623F42A9400A56071 /* SearchVC.swift */,
 				0B43487823ED92C9002EFE9B /* FollowerListViewController.swift */,
-				0B43489E23F1889A002EFE9B /* UserInfoViewController.swift */,
 				0B43487023EC9510002EFE9B /* FavoritesListViewController.swift */,
+				0B43489E23F1889A002EFE9B /* UserInfoViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
