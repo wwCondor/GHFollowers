@@ -50,7 +50,6 @@ class GFItemInfoVC: UIViewController {
         configureBackgroundView()
         layoutUI()
         configureStackViewContent()
-        
     }
     
     private func configureBackgroundView() {

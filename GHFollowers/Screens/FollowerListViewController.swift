@@ -248,9 +248,10 @@ extension FollowerListViewController: UISearchResultsUpdating {
 
 extension FollowerListViewController: UserInfoVCDelegate {
     func didRequestFollowers(for username: String) {
-        self.username   = username
-        title           = username
-        page            = 1
+        hasMoreFollowers = true
+        self.username    = username
+        title            = username
+        page             = 1
         followers.removeAll()
         filteredFollowers.removeAll()
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)

@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				0B15913123F2E1E600A56071 /* GFItemInfoVC.swift */,
-				0B15914023F4276A00A56071 /* GFRepoItemVC.swift */,
 				0B15914223F427D800A56071 /* GFFollowerItemVC.swift */,
+				0B15914023F4276A00A56071 /* GFRepoItemVC.swift */,
 			);
 			path = ItemInfoViewControllers;
 			sourceTree = "<group>";
@@ -180,14 +180,14 @@
 		0B43486723EC8C9D002EFE9B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				0B15914823F435B000A56071 /* TabBarController */,
+				0B4348A523F1968A002EFE9B /* Button */,
+				0B43488E23F027D0002EFE9B /* Cell */,
 				0B15913023F2DBDF00A56071 /* ImageView */,
 				0B4348A723F1969D002EFE9B /* Label */,
+				0B15914823F435B000A56071 /* TabBarController */,
 				0B4348A623F19691002EFE9B /* TextField */,
-				0B4348A523F1968A002EFE9B /* Button */,
 				0B4348A223F19643002EFE9B /* ViewController */,
 				0B43489923F15D16002EFE9B /* View */,
-				0B43488E23F027D0002EFE9B /* Cell */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -234,8 +234,8 @@
 		0B43488E23F027D0002EFE9B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0B43488F23F027F5002EFE9B /* FollowerCell.swift */,
 				0B15913E23F41A4E00A56071 /* FavoriteCell.swift */,
+				0B43488F23F027F5002EFE9B /* FollowerCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -254,8 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				0B15913723F2EA4000A56071 /* ItemInfoViewControllers */,
-				0B15914F23F44D1A00A56071 /* GFDataLoadingVC.swift */,
 				0B15914423F4285B00A56071 /* GFAlertVC.swift */,
+				0B15914F23F44D1A00A56071 /* GFDataLoadingVC.swift */,
 				0B4348A323F1966E002EFE9B /* GFUserInfoHeaderViewController.swift */,
 			);
 			path = ViewController;
@@ -280,9 +280,9 @@
 		0B4348A723F1969D002EFE9B /* Label */ = {
 			isa = PBXGroup;
 			children = (
-				0B43487A23ED9BE6002EFE9B /* GFTitleLabel.swift */,
-				0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */,
 				0B43487C23ED9D66002EFE9B /* GFBodyLabel.swift */,
+				0B4348A823F19783002EFE9B /* GFSecondaryTitleLabel.swift */,
+				0B43487A23ED9BE6002EFE9B /* GFTitleLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";

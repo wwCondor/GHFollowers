@@ -6,7 +6,7 @@
 //  Copyright © 2020 CodingCondor. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIStackView {
     func addArrangedSubviews(_ views: UIView...) {

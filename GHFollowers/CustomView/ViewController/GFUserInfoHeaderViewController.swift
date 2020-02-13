@@ -28,10 +28,10 @@ class GFUserInfoHeaderViewController: UIViewController {
     }()
     
     private lazy var locationImageView: UIImageView = {
-        let locationImageView = UIImageView()
-        locationImageView.image = SFSymbols.location
+        let locationImageView       = UIImageView()
+        locationImageView.image     = SFSymbols.location
         locationImageView.tintColor = .systemPink
-        locationImageView.alpha = AlphaConfiguration.systemPinkAlpha
+        locationImageView.alpha     = AlphaConfiguration.systemPinkAlpha
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
         return locationImageView
     }()
@@ -66,18 +66,11 @@ class GFUserInfoHeaderViewController: UIViewController {
     
     private func configureUIForUser() {
         guard let user = user else { return }
-        downloadAvatarImage(for: user)
-        usernameLabel.text = user.login
-        nameLabel.text = user.name ?? ""
-        locationLabel.text = user.location ?? "No location"
-        bioLabel.text = user.bio ?? "No available bio"
-    }
-    
-    private func downloadAvatarImage(for user: User) {
-        NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
-            guard let self = self else { return }
-            DispatchQueue.main.async { self.avatarImageView.image = image }
-        }
+        avatarImageView.downloadImage(fromURL: user.avatarUrl)
+        usernameLabel.text  = user.login
+        nameLabel.text      = user.name ?? ""
+        locationLabel.text  = user.location ?? "No location"
+        bioLabel.text       = user.bio ?? "No available bio"
     }
     
     private func configureView() {
