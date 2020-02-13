@@ -10,14 +10,13 @@ import UIKit
 
 class NetworkManager {
     
-    static let shared = NetworkManager()
+    static let shared                   = NetworkManager()
+    private let baseUrl: String         = "https://api.github.com/users/"
+    private let perPageFollowers: Int   = 100
+    let avatarImageCache                = NSCache<NSString, UIImage>() /// init cache
+    
     private init() { } /// These two lines makes it a singleton
-    
-    private let baseUrl: String = "https://api.github.com/users/"
-    private let perPageFollowers: Int = 100
-    
-    let avatarImageCache = NSCache<NSString, UIImage>() /// init cache
-//    let cache = NetworkManager.shared.avatarImageCache
+
     
     func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         let endpoint = baseUrl + "\(username)/followers?per_page=\(perPageFollowers)&page=\(page)"
@@ -81,8 +80,8 @@ class NetworkManager {
             }
             
             do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decoder                  = JSONDecoder()
+                decoder.keyDecodingStrategy  = .convertFromSnakeCase
                 decoder.dateDecodingStrategy = .iso8601
                 let user = try decoder.decode(User.self, from: data)
                 completed(.success(user))
