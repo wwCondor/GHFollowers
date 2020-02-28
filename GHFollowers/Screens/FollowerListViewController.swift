@@ -106,7 +106,6 @@ class FollowerListViewController: GFDataLoadingVC {
             return
         }
         updateData(on: self.followers)
-        DispatchQueue.main.async { self.updateSearchResults(for: self.searchController) }
     }
     
     private func configureDataSource() {
@@ -122,7 +121,10 @@ class FollowerListViewController: GFDataLoadingVC {
         snapshot.deleteAllItems()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
-        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+            self.updateSearchResults(for: self.searchController)
+        }
     }
     
     @objc private func addButtonTapped() {
@@ -153,7 +155,7 @@ class FollowerListViewController: GFDataLoadingVC {
 }
 
 extension FollowerListViewController: UICollectionViewDelegate {
-    /// When user scrolls all the way towards the bottom of the scrollView a request will be made for the next followers-page
+    /// When user scrolls all the way towards the bottom of the scrollView a request will be made for the next followers-l
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
