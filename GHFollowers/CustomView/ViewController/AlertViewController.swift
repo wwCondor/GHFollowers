@@ -8,16 +8,13 @@
 
 import UIKit
 
-class GFAlertVC: UIViewController {
+final class AlertViewController: UIViewController {
     
     private var alertTitle: String?
     private var alertMessage: String?
     private var alertButtonTitle: String?
     
-    private lazy var containerView: GFAlertContainerView = {
-        let containerView = GFAlertContainerView()
-        return containerView
-    }()
+    private let containerView = GFAlertContainerView()
     
     private lazy var titleLabel: GFTitleLabel = {
         let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
