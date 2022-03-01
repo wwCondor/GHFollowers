@@ -17,8 +17,9 @@ class NetworkManager {
     
     private init() { } /// These two lines makes it a singleton
 
+    typealias FollowersCompletionHandler = (Result<[Follower], GFError>) -> Void
     
-    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
+    func getFollowers(for username: String, page: Int, completed: @escaping FollowersCompletionHandler) {
         let endpoint = baseUrl + "\(username)/followers?per_page=\(perPageFollowers)&page=\(page)"
         
         guard let url = URL(string: endpoint) else {
@@ -46,7 +47,7 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let followers = try decoder.decode([Follower].self, from: data)
-                print(data)
+                print("FOLLOWERS: \(followers)")
                 completed(.success(followers))
             } catch {
                 completed(.failure(.invalidData))
@@ -56,7 +57,9 @@ class NetworkManager {
         task.resume()
     }
     
-    func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
+    typealias UserInfoCompletionHandler = (Result<User, GFError>) -> Void
+    
+    func getUserInfo(for username: String, completed: @escaping UserInfoCompletionHandler) {
         let endpoint = baseUrl + "\(username)"
         
         guard let url = URL(string: endpoint) else {
@@ -81,8 +84,8 @@ class NetworkManager {
             }
             
             do {
-                let decoder                  = JSONDecoder()
-                decoder.keyDecodingStrategy  = .convertFromSnakeCase
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 decoder.dateDecodingStrategy = .iso8601
                 let user = try decoder.decode(User.self, from: data)
                 completed(.success(user))
@@ -94,7 +97,9 @@ class NetworkManager {
         task.resume()
     }
     
-    func downloadImage(from urlString: String, completed: @escaping (UIImage?)-> Void) {
+    typealias ImageCompletionHandler = (UIImage?)-> Void
+    
+    func downloadImage(from urlString: String, completed: @escaping ImageCompletionHandler) {
         let cacheKey = NSString(string: urlString) /// This needs unique identifier
         
         if let image = avatarImageCache.object(forKey: cacheKey) {
