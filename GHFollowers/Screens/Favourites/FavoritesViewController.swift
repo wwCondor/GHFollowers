@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesListViewController: GFDataLoadingVC {
+final class FavoritesViewController: UIViewController {
     
     var favorites: [Follower] = []
     
@@ -19,7 +19,7 @@ class FavoritesListViewController: GFDataLoadingVC {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.identifier)
-        tableView.removeExcessCells()
+        tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()
     
@@ -45,7 +45,7 @@ class FavoritesListViewController: GFDataLoadingVC {
             guard let self = self else { return }
             switch result {
             case .success(let favorites): self.updateUI(with: favorites)
-            case .failure(let error): self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
+            case .failure(let error): self.presentAlert(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
             }
         }
     }
@@ -63,7 +63,7 @@ class FavoritesListViewController: GFDataLoadingVC {
     }
 }
 
-extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegate {
+extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites.count
     }
@@ -77,7 +77,7 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite      = favorites[indexPath.row]
-        let destinationVC = FollowerListViewController(username: favorite.login)
+        let destinationVC = FollowersViewController(username: favorite.login)
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     
@@ -91,7 +91,7 @@ extension FavoritesListViewController: UITableViewDataSource, UITableViewDelegat
                 tableView.deleteRows(at: [indexPath], with: .left)
                 return
             }
-            self.presentGFAlertOnMainThread(title: "Unable to remove", message: error.localizedDescription, buttonTitle: "Ok")
+            self.presentAlert(title: "Unable to remove", message: error.localizedDescription, buttonTitle: "Ok")
         }
     }
 }
