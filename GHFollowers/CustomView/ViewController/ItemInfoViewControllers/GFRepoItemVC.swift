@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GitHubProfileDelegate: class {
+protocol GitHubProfileDelegate: AnyObject {
     func didTapGitHubProfile(for user: User)
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GitHubFollowersDelegate: class {
+protocol GitHubFollowersDelegate: AnyObject {
     func didTapGitHubFollowers(for user: User)
 }
 
