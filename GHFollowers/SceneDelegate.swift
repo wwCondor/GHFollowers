@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private let coordinator = Coordinator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
@@ -18,10 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = GFTabBarController()
+        window?.rootViewController = coordinator.tabBarController
         window?.makeKeyAndVisible()
-        
-        configureNavigationBar()
+        coordinator.start()
     }
     
     private func configureNavigationBar() {
