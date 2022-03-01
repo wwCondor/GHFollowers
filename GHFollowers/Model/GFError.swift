@@ -32,7 +32,20 @@ extension GFError: LocalizedError {
         case .unableToFavorite:      return "There was an error favoriting user. Please try again."
         case .alreadyFavorite:       return "You've already added this user to your favorites"
         case .noFollowers:           return "The user you selected has no followers. What a shame 😟"
-
+        }
+    }
+    
+    public var title: String {
+        switch self {
+        case .invalidUsername:       return "Empty Username"
+        case .invalidRequest:        return "Invalid request"
+        case .noConnection:          return "Network error"
+        case .invalidResponse:       return "Invalid response"
+        case .invalidData:           return "Invalid Data"
+        case .invalidUrl:            return "Invalid URL"
+        case .unableToFavorite:      return "Something went wrong"
+        case .alreadyFavorite:       return "User already favourite"
+        case .noFollowers:           return "No followers"
         }
     }
 }
