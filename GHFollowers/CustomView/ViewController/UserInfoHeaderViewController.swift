@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GFUserInfoHeaderViewController: UIViewController {
+final class UserInfoHeaderViewController: UIViewController {
     
     var user: User?
     
